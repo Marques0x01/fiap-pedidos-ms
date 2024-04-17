@@ -52,7 +52,9 @@ jobs:
           cd app
           npm install
       - name: Test and coverage
-        run: npm test
+        run: |
+          cd app
+          npm test
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
