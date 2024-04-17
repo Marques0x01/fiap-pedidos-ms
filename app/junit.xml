@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Test Suite" tests="1" failures="0" errors="0" time="0.584">
+  <testsuite name="CreateOrderService" errors="0" failures="0" skipped="0" timestamp="2024-04-17T02:59:51" time="0.491" tests="1">
+    <testcase classname="CreateOrderService should create an order" name="CreateOrderService should create an order" time="0.004">
+    </testcase>
+  </testsuite>
+</testsuites>
