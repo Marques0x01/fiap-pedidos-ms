@@ -7,16 +7,29 @@
   "author": "SAM CLI",
   "license": "MIT",
   "dependencies": {
+    "@types/jest": "^29.5.12",
     "axios": "^1.6.8",
+    "express": "^4.19.2",
+    "jest": "^29.7.0",
     "node-fetch": "^3.3.2",
     "pg": "^8.11.5",
-    "uuid": "^9.0.1",
-    "@types/jest": "^29.5.12",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.1.1"
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.1",
+    "uuid": "^9.0.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --coverage"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-reporter.xml",
+    "indent": 2
   },
   "devDependencies": {
     "babel-plugin-add-module-exports": "^1.0.4",
