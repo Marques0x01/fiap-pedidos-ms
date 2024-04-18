@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket         = var.bucket_backend_name
+    bucket         = "tfstates-fiap"
     key            = "fiap_pedidos_ms/terraform.tfstate"
     region         = "us-east-1"
     
