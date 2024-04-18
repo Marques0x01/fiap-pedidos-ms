@@ -58,7 +58,6 @@ jobs:
           projectBaseDir: app/
           args: >
             -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.coverageReportPaths=coverage/clover.xml
             -Dsonar.verbose=true
             -Dsonar.projectKey=Marques0x01_fiap-pedidos-ms
             -Dsonar.organization=marques0x01
