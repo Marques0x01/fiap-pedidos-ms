@@ -46,7 +46,9 @@ jobs:
           # Disabling shallow clones is recommended for improving the relevancy of reporting
           fetch-depth: 0
       - name: Install dependencies
-        run: yarn
+        run: |
+          cd app
+          npm install
       - name: Test and coverage
         run: |
           cd app
