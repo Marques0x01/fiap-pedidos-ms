@@ -22,23 +22,8 @@ jobs:
           cd app
           npm install
 
-  Tests:
+  Tests-Sonar:
     needs: Build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          cd app
-          npm install
-      - name: Run tests
-        run: |
-          cd app
-          npm test
-
-  Sonar:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
