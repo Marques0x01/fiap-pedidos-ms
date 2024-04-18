@@ -39,31 +39,35 @@ jobs:
           npm test
 
   Sonar:
-    needs: Tests
-    name: Build and analyze
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+          # Disabling shallow clones is recommended for improving the relevancy of reporting
+          fetch-depth: 0
       - name: Install dependencies
-        run: |
-          cd app
-          npm install
+        run: yarn
       - name: Test and coverage
-        run: |
-          cd app
-          npm test
-      - uses: sonarsource/sonarqube-scan-action@master
+        run: yarn jest --coverage
+      - name: SonarQube Scan
+        with:
+          projectBaseDir: app/src
+        uses: sonarsource/sonarcloud-github-action@master
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - uses: sonarsource/sonarqube-quality-gate-action@master
+          SONAR_HOST_URL: https://sonarcloud.io]
+
+      # Check the Quality Gate status.
+      - name: SonarQube Quality Gate check
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
         timeout-minutes: 5
+        with:
+          scanMetadataReportFile: src/.scannerwork/report-task.txt
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      
 
   Publish:
     needs: Sonar
