@@ -56,6 +56,11 @@ jobs:
       - name: SonarQube Scan
         with:
           projectBaseDir: app/src
+          args: >
+            -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
+            -Dsonar.verbose=true
+            -Dsonar.projectKey=Marques0x01_fiap-pedidos-ms
+            -Dsonar.organization=marques0x01
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
