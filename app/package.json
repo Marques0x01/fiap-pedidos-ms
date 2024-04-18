@@ -22,6 +22,7 @@
   },
   "jest": {
     "testEnvironment": "node",
+    "coverageReporters": ["json", "lcov", "text", "clover"],
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
