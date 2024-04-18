@@ -39,12 +39,6 @@ jobs:
           cd app
           npm test 
       - name: SonarQube Scan
-        with:
-          projectBaseDir: app/
-          args: >
-            -Dsonar.typescript.lcov.reportPaths=coverage/lcov.info
-            -Dsonar.verbose=true
-            -Dsonar.projectKey=fiap-pedidos-ms
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
