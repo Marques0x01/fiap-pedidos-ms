@@ -51,7 +51,6 @@ jobs:
         run: |
           cd app
           npm test 
-          yarn jest --coverage
       - name: SonarQube Scan
         with:
           projectBaseDir: app/src
