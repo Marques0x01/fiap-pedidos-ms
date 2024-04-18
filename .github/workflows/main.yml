@@ -48,7 +48,10 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Test and coverage
-        run: yarn jest --coverage
+        run: |
+          cd app
+          npm test 
+          yarn jest --coverage
       - name: SonarQube Scan
         with:
           projectBaseDir: app/src
