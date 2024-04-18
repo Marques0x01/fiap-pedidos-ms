@@ -64,7 +64,7 @@ jobs:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   Publish:
-    needs: Sonar
+    needs: Tests-Sonar
     runs-on: ubuntu-latest
 
     steps:
