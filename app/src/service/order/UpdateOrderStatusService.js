@@ -8,7 +8,7 @@ class UpdateOrderStatusService {
         return {
             statusCode: 200,
             body: JSON.stringify({
-              message: (`Order recovered`),
+              message: (`Order updated`),
               statusCode: 200,
               orders: result
             })
