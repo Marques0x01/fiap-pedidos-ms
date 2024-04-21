@@ -3,13 +3,14 @@ const { OrderRepository } = require("../../repository/OrderRepository.js").defau
 class GetAllUnfinishedOrdersService {
 
     async execute() {
-        await new OrderRepository().getAllUnfinishedOrders().then(resp => resp);
+        const result = await new OrderRepository().getAllUnfinishedOrders().then(resp => resp);
 
         return {
             statusCode: 200,
             body: JSON.stringify({
-              message: (`Order updated`),
-              statusCode: 200
+              message: (`Orders recovered`),
+              statusCode: 200,
+              orders: result
             })
           }
     }
