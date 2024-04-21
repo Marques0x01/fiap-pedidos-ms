@@ -10,7 +10,9 @@ class UpdateOrderStatusService {
             body: JSON.stringify({
               message: (`Order updated`),
               statusCode: 200,
-              orders: result
+              orders: result,
+              id: id,
+              status: status
             })
           }
     }
