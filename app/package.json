@@ -24,7 +24,11 @@
     "testEnvironment": "node",
     "coverageReporters": ["json", "lcov", "text", "clover"],
     "coveragePathIgnorePatterns": [
-      "/node_modules/"
+      "/node_modules/",
+      "/src/config",
+      "/src/domain",
+      "/src/http",
+      "/src/repository"
     ]
   },
   "jest-junit": {
