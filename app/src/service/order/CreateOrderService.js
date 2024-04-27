@@ -11,6 +11,8 @@ class CreateOrderService {
     const product = new ProductHttp();
     const repository = new OrderRepository();
 
+    console.log(order)
+
     const client = order.clientCpf ? await clientHttp.getClient(order.clientCpf).then(resp => resp) : null
 
     const order_created = {
