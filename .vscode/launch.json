@@ -12,10 +12,10 @@
       "lambda": {
         "payload": {
           "json": {
-            "body": "{\"id\":\"01234527490\"}",
+            "body": "{\"value\":100,\"productsIds\":[\"c085396c-8391-4d3e-975c-01faaba71876\"],\"clientCpf\":\"12345677890\"}",
             "resource": "/{proxy+}",
             "path": "/fiap-lanches/order",
-            "httpMethod": "PUT",
+            "httpMethod": "POST",
             "isBase64Encoded": true,
             "queryStringParameters": {
               "status": "cancelled",

@@ -53,6 +53,10 @@ When('I send a POST request to {string} with the following details with a random
         .then(data => {
             // console.log('Product recovered:', id);
             // products.push(data.id); //
+        })
+        .catch(err => {
+            console.log("err")
+            console.log(err)
         });
 });
 
