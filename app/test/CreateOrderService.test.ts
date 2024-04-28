@@ -31,7 +31,7 @@ describe("CreateOrderService", () => {
       statusCode: 201,
       body: JSON.stringify({
         message: `Order created: ${mockOrderId}`,
-        statusCode: 200,
+        statusCode: 201,
         orderId: mockOrderId,
       }),
     });
