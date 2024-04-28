@@ -17,7 +17,7 @@ describe("GetAllUnfinishedOrdersService", () => {
     const response = await service.execute();
 
     expect(response).toEqual({
-      statusCode: 200,
+      statusCode: 201,
       body: JSON.stringify({
         message: "Orders recovered",
         statusCode: 200,
