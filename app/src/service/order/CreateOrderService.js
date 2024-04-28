@@ -27,10 +27,10 @@ class CreateOrderService {
 
     const orderId = await repository.saveOrUpdate(order_created).then(resp => resp);
     return {
-      statusCode: 200,
+      statusCode: 201,
       body: JSON.stringify({
         message: (`Order created: ${orderId}`),
-        statusCode: 200,
+        statusCode: 201,
         orderId: orderId
       })
     }
