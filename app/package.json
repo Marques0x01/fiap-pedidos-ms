@@ -18,7 +18,8 @@
     "uuid": "^9.0.1"
   },
   "scripts": {
-    "test": "jest --coverage --ci --reporters=default --reporters=jest-junit && cucumber-js ./test/automated/features --require ./test/automated/steps"
+    "test": "jest --coverage --ci --reporters=default --reporters=jest-junit",
+    "bdd": "cucumber-js ./test/automated/features --require ./test/automated/steps"
   },
   "jest": {
     "testEnvironment": "node",
