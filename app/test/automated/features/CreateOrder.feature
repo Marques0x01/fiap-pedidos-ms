@@ -11,5 +11,7 @@ Feature: Calculator
     Then the response should have status 201
     And should return a unique order ID
     And the order should be registered with the following details:
-      | clientId            | value     | status          |
-      | #{clientCpf}        | 80.00     | received        |
+      | order_payment       | waiting      |
+      | status              | received     |
+    And the order should be registered in table with produts
+    And the order should be registered with a client
