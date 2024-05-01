@@ -5,11 +5,11 @@ Feature: Calculator
  
  Scenario: Create Order
     When I send a POST request to "/order" with the following details with a random product ID:
-      | clientCpf   | 29529422019       |
-      | value       | 80.00             |
-      | productsIds | #{productId}      |
+      | clientCpf   | #{clientCpf}       |
+      | value       | 80.00              |
+      | productsIds | #{productId}       |
     Then the response should have status 201
     And should return a unique order ID
     And the order should be registered with the following details:
-      | clientId    | value     | status          |
-      | 51234       | 80.00     | received        |
+      | clientId            | value     | status          |
+      | #{clientCpf}        | 80.00     | received        |

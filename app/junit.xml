@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Test Suite" tests="5" failures="0" errors="0" time="1.22">
-  <testsuite name="CreateOrderService" errors="0" failures="0" skipped="0" timestamp="2024-04-28T17:55:05" time="0.491" tests="1">
-    <testcase classname="CreateOrderService should create an order" name="CreateOrderService should create an order" time="0.015">
+<testsuites name="Test Suite" tests="5" failures="0" errors="0" time="5.947">
+  <testsuite name="CreateOrderService" errors="0" failures="0" skipped="0" timestamp="2024-05-01T14:48:35" time="4.488" tests="1">
+    <testcase classname="CreateOrderService should create an order" name="CreateOrderService should create an order" time="0.008">
     </testcase>
   </testsuite>
-  <testsuite name="GetOrderByStatusService" errors="0" failures="0" skipped="0" timestamp="2024-04-28T17:55:06" time="0.14" tests="1">
-    <testcase classname="GetOrderByStatusService should get an order by status" name="GetOrderByStatusService should get an order by status" time="0.003">
+  <testsuite name="GetOrderByIdService" errors="0" failures="0" skipped="0" timestamp="2024-05-01T14:48:39" time="0.149" tests="1">
+    <testcase classname="GetOrderByIdService should get an order by id" name="GetOrderByIdService should get an order by id" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="GetOrderByIdService" errors="0" failures="0" skipped="0" timestamp="2024-04-28T17:55:06" time="0.14" tests="1">
-    <testcase classname="GetOrderByIdService should get an order by id" name="GetOrderByIdService should get an order by id" time="0.003">
+  <testsuite name="UpdateOrderStatusService" errors="0" failures="0" skipped="0" timestamp="2024-05-01T14:48:39" time="0.148" tests="1">
+    <testcase classname="UpdateOrderStatusService should update an order status" name="UpdateOrderStatusService should update an order status" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="GetAllUnfinishedOrdersService" errors="0" failures="0" skipped="0" timestamp="2024-04-28T17:55:06" time="0.136" tests="1">
+  <testsuite name="GetAllUnfinishedOrdersService" errors="0" failures="0" skipped="0" timestamp="2024-05-01T14:48:40" time="0.15" tests="1">
     <testcase classname="GetAllUnfinishedOrdersService should get all unfinished orders" name="GetAllUnfinishedOrdersService should get all unfinished orders" time="0.002">
     </testcase>
   </testsuite>
-  <testsuite name="UpdateOrderStatusService" errors="0" failures="0" skipped="0" timestamp="2024-04-28T17:55:06" time="0.132" tests="1">
-    <testcase classname="UpdateOrderStatusService should update an order status" name="UpdateOrderStatusService should update an order status" time="0.003">
+  <testsuite name="GetOrderByStatusService" errors="0" failures="0" skipped="0" timestamp="2024-05-01T14:48:40" time="0.143" tests="1">
+    <testcase classname="GetOrderByStatusService should get an order by status" name="GetOrderByStatusService should get an order by status" time="0.002">
     </testcase>
   </testsuite>
 </testsuites>
