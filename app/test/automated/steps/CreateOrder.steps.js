@@ -67,9 +67,9 @@ After(async function () {
 When('I send a POST request to {string} with the following details with a random product ID:', async function (path, dataTable) {
 
     let table = dataTable.rowsHash()
-    table.productsIds = [this.productId]
+    table.productsIds = [new String(this.productId)]
     table.clientCpf = Number(this.clientCpf)
-
+    
     await axios.post(apiPath + path, table)
         .then(response => {
             if (response.status !== 201) {
