@@ -6,58 +6,59 @@ const { GetOrderByStatusService } = require("./src/service/order/GetOrderByStatu
 const AWS = require('aws-sdk');
 
 exports.handler = async (event) => {
-  const taskToken = null;
+  let taskToken = event.taskToken || null;
 
-  if (event.taskToken) {
-    taskToken = event.taskToken;
-  }
+  const method = event.path + "-" + event.httpMethod;
+  
+  try {
+    let response;
+    switch (method) {
+      case "/fiap-lanches/order-POST":
+        const serviceCreate = new CreateOrderService();
+        response = await serviceCreate.execute(JSON.parse(event.body));
+        break;
 
-  let method = event.path + "-" + event.httpMethod
-  switch (method) {
-    case "/fiap-lanches/order-POST":
-      const serviceCreate = new CreateOrderService();
-      if (event.taskToken) {
-        sendSfToken(taskToken);
-      }
-      return await serviceCreate.execute(JSON.parse(event.body)).then(resp => { 
-        JSON.stringify({ token: taskToken, resp: resp }) 
-      });
-    case "/fiap-lanches/order-GET":
-      const serviceStatus = new GetOrderByStatusService();
-      if (event.taskToken) {
-        sendSfToken(taskToken);
-      }
-      return await serviceStatus.execute(event.queryStringParameters.status).then(resp => { 
-        JSON.stringify({ token: taskToken, resp: resp }) 
-      });
-    case "/fiap-lanches/order-PUT":
-      const serviceUpdate = new UpdateOrderStatusService();
-      if (event.taskToken) {
-        sendSfToken(taskToken);
-      }
-      return await serviceUpdate.execute(event.queryStringParameters.id, event.queryStringParameters.status).then(resp => { 
-        JSON.stringify({ token: taskToken, resp: resp }) 
-      });
-    case "/fiap-lanches/order/unfinished-GET":
-      const serviceUnfinished = new GetAllUnfinishedOrdersService();
-      if (event.taskToken) {
-        sendSfToken(taskToken);
-      }
-      return await serviceUnfinished.execute().then(resp => { 
-        JSON.stringify({ token: taskToken, resp: resp }) 
-      });
-    default:
-      if (event.taskToken) {
-        sendSfToken(taskToken);
-      }
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-          message: (`Resource not found: ${event.path}`),
+      case "/fiap-lanches/order-GET":
+        const serviceStatus = new GetOrderByStatusService();
+        response = await serviceStatus.execute(event.queryStringParameters.status);
+        break;
+
+      case "/fiap-lanches/order-PUT":
+        const serviceUpdate = new UpdateOrderStatusService();
+        response = await serviceUpdate.execute(event.queryStringParameters.id, event.queryStringParameters.status);
+        break;
+
+      case "/fiap-lanches/order/unfinished-GET":
+        const serviceUnfinished = new GetAllUnfinishedOrdersService();
+        response = await serviceUnfinished.execute();
+        break;
+
+      default:
+        return {
           statusCode: 404,
-          token: taskToken
-        })
-      }
+          body: JSON.stringify({
+            message: `Resource not found: ${event.path}`,
+            statusCode: 404,
+            token: taskToken
+          })
+        };
+    }
+
+    if (taskToken) {
+      await sendSfToken(taskToken);
+    }
+    
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ token: taskToken, resp: response })
+    };
+
+  } catch (error) {
+    console.error(error);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Internal Server Error', message: error.message, token: taskToken })
+    };
   }
 };
 
@@ -68,12 +69,7 @@ async function sendSfToken(taskToken) {
       taskToken: taskToken,
       output: JSON.stringify({ result: "Processamento concluído" })
     }).promise();
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ token: taskToken })
-    };
   } catch (error) {
-    console.error(error);
+    console.error("Error sending task token to Step Function:", error);
   }
 }
