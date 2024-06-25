@@ -7,7 +7,7 @@ const { GetOrderByStatusService } = require("./src/service/order/GetOrderByStatu
 exports.handler = async (event) => {
 
   const method = event.path + "-" + event.httpMethod;
-  
+
   try {
     let response;
     switch (method) {
@@ -36,22 +36,21 @@ exports.handler = async (event) => {
           statusCode: 404,
           body: JSON.stringify({
             message: `Resource not found: ${event.path}`,
-            statusCode: 404,
-            token: taskToken
+            statusCode: 404
           })
         };
     }
-    
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ token: taskToken, resp: response })
+      body: JSON.stringify({ resp: response })
     };
 
   } catch (error) {
     console.error(error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Internal Server Error', message: error.message, token: taskToken })
+      body: JSON.stringify({ error: 'Internal Server Error', message: error.message })
     };
   }
 };
