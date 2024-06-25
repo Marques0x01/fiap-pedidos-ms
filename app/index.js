@@ -3,10 +3,8 @@ const { CreateOrderService } = require("./src/service/order/CreateOrderService.j
 const { GetAllUnfinishedOrdersService } = require("./src/service/order/GetAllUnfinishedOrdersService.js").default;
 const { GetOrderByStatusService } = require("./src/service/order/GetOrderByStatusService.js").default;
 
-const AWS = require('aws-sdk');
 
 exports.handler = async (event) => {
-  let taskToken = event.taskToken || null;
 
   const method = event.path + "-" + event.httpMethod;
   
@@ -43,10 +41,6 @@ exports.handler = async (event) => {
           })
         };
     }
-
-    if (taskToken) {
-      await sendSfToken(taskToken);
-    }
     
     return {
       statusCode: 200,
@@ -61,15 +55,3 @@ exports.handler = async (event) => {
     };
   }
 };
-
-async function sendSfToken(taskToken) {
-  const stepfunctions = new AWS.StepFunctions();
-  try {
-    await stepfunctions.sendTaskSuccess({
-      taskToken: taskToken,
-      output: JSON.stringify({ result: "Processamento concluído" })
-    }).promise();
-  } catch (error) {
-    console.error("Error sending task token to Step Function:", error);
-  }
-}
