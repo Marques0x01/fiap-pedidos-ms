@@ -14,7 +14,7 @@ const apiPath = "https://s7gj6mrxe0.execute-api.us-east-1.amazonaws.com/prod/fia
 Before(async function () {
 
     try {
-        let path = 'http://fiap-elb-1174290082.us-east-1.elb.amazonaws.com:3000/api/v1/product?category=Main%20Dish'
+        let path = 'http://fiap-elb-433654547.us-east-2.elb.amazonaws.com:3000/api/v1/product?category=Main%20Dish'
 
         let data = await axios.get(path)
             .then(response => {
@@ -30,7 +30,7 @@ Before(async function () {
         this.productId = data.products[0].id;
 
 
-        let pathClient = 'http://fiap-elb-1174290082.us-east-1.elb.amazonaws.com:3000/api/v1/client'
+        let pathClient = 'http://fiap-elb-433654547.us-east-2.elb.amazonaws.com:3000/api/v1/client'
 
         let dataClient = await axios.get(pathClient)
             .then(response => {

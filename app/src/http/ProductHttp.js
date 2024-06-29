@@ -6,7 +6,7 @@ class ProductHttp {
         let products = []
 
         const requests = productIds.map(id => {
-            let path = 'http://fiap-elb-1174290082.us-east-1.elb.amazonaws.com:3000/api/v1/product/' + id
+            let path = 'http://fiap-elb-433654547.us-east-2.elb.amazonaws.com:3000/api/v1/product/' + id
 
             return axios.get(path)
                 .then(response => {
