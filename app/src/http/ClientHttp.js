@@ -3,7 +3,7 @@ const axios = require('axios');
 class ClientHttp {
 
     async getClient(clientId) {
-        let path = 'http://fiap-elb-433654547.us-east-2.elb.amazonaws.com:3000/api/v1/client/' + clientId
+        let path = 'http://fiap-elb-991939539.us-east-2.elb.amazonaws.com:3000/api/v1/client/' + clientId
 
         return await axios.get(path)
             .then(response => {
