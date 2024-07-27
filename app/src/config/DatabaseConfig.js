@@ -4,9 +4,9 @@ class Database {
 
     constructor() {
         return new Pool({
-            host: "fiap-pedidos-ms.cra40kywkxpa.us-east-2.rds.amazonaws.com",
+            host: "totem-pedidos.cr2606cgcfa7.us-east-2.rds.amazonaws.com",
             user: "postgres",
-            password: "mysecretpassword",
+            password: "secretpassword",
             database: "postgres",
             port: 5432,
             ssl: {

@@ -14,10 +14,6 @@ variable "role_name" {
   type        = string
 }
 
-variable "bucket_backend_name" {
-  description = "Bucket backend name"
-  type        = string
-}
 
 variable "region" {
   description = "Region name"
