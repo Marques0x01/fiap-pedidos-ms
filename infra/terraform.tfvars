@@ -1,7 +1,6 @@
-lambda_name         = "fiap_pedidos_ms"
-policies_name       = "fiap_pedidos_ms_policies"
-role_name           = "fiap_pedidos_ms_role"
-bucket_backend_name = "tfstates-fiap"
+lambda_name         = "totem_pedidos"
+policies_name       = "totem_pedidos_policies"
+role_name           = "totem_pedidos_role"
 region              = "us-east-2"
 
 
